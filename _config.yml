@@ -32,7 +32,7 @@ navs:
 
   -
     href: /categories/
-    label: 分类
+    label: Categories
 
 #   -
 #     href: /archives/
@@ -48,7 +48,7 @@ navs:
 
   -
     href: /about/
-    label: About 
+    label: About
 
 # ---------------- #
 #       RSS        #
