@@ -1,5 +1,7 @@
 ---
 layout: page
+class: home
+css: ['pages/index.css']
 title: About
 description: 码农
 keywords: Meng

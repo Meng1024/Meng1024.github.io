@@ -1,5 +1,7 @@
 ---
 layout: page
+class: home
+css: ['pages/index.css']
 title: 归档
 description: 按年份归档
 keywords: 归档
