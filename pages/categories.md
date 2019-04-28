@@ -1,11 +1,9 @@
 ---
 layout: categories
-class: home
 title: Categories
 keywords: 分类
 comments: false
 menu: 分类
-css: ['pages/index.css']
 permalink: /categories/
 ---
 
