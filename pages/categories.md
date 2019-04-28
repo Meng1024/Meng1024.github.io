@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: categories
 class: home
 title: Categories
 keywords: 分类
