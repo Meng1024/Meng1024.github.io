@@ -103,7 +103,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: Meng1024
-    repo: Meng1024.github.io
+    repo: blog-comments
     clientID: 6fa190e321d18d91ac18
     clientSecret: 93bc614907a7a8c1c6f6deb85a64248a227533c0
 # 在使用其它评论组件时可点击显示 Disqus
