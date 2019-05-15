@@ -17,7 +17,7 @@ tags:
 ### 数据库索引
 #### Hash indexes
 
-  1. what is hash indexes?  
+  1. Introduce hash indexes
 Keep an in-memory hash map where every key is mapped to a byte offset in the data file—the location at which the value can be found
 
   2. use case : Bitcask (the default storage engine in Riak)
@@ -47,5 +47,32 @@ Keep an in-memory hash map where every key is mapped to a byte offset in the dat
   - compression data first and wirte to dish will reduce I/O bandwidth use
 
 #### LSM-tree
-To be continued...
+1. Introduce LSM: LSM is short for Log-Structured Merge-Tree.
+  这有一个[blog](https://blog.csdn.net/sdulibh/article/details/79630614)讲的很清楚。 写的大致原理就是，它 consists of two MemTables
+in main memory and a set of SSTables. 当有数据来的时候，先放入log file 中，然后到memTable. 当memTable满了或者定期刷到一个read only Immutable MemTable. 后台线程在刷入level 0. 此时level 0 可能存在重复元素。除此之外的level都不会存在。 每当level l超出了size limit，后台线程就会merge l 层和l+1 层，产生一个新的l+1 层.
+读的flow：先查memtable，如果没有，从level0开始一直查下去. 如果该值不存在的话，读的效率会很低，所以一般会用到bloom filter来加速
+
+![lsm](https://meng1024.github.io/images/posts/system_design/LSM.png)
+
+2.  use case: levelDB, RocksDB
+3.  advantages
+  - support high write throughtput.
+  - support range queries.
+4. disadvantages
+   - read might slow
+   - compaction process can sometimes interfere with the performance of ongoing reads and writes
+   - If write throughput is high and compaction is not configured carefully, it can happen that compaction cannot keep up with the rate of incoming writes
+
+
+
+
 #### B Tree
+
+1. Introduce B tree: B-trees break the database down into fixed-size blocks or pages, traditionally 4 KB in size (sometimes bigger), and read or write one page at a time. 感觉就是一个多叉树，叶子节点存放的是page. 这个结构里面，写入操作是overwrite的， 因为中间牵扯到page split， 所以写的时候，需要额外一个 WAL（a write-ahead log), 以防写在一半的时候，数据库crash。 这只是其中一种解决办法
+
+2. use case： SQL
+3. advantages
+ - faster for read operations
+ - Each key exists in exactly one place in the B tree, whereas a log-structured storage engine may have multiple copies of the same key in different segments.
+4. disadvantages
+ - writes slow since overwrite data
