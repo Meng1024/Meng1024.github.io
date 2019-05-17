@@ -14,7 +14,15 @@ tags:
 ## Chapter 3
 这章主要讲数据的存储与索引：
 
-### 数据库索引
+
+### OLAP 与 OLTP
+OLTP systems are typically user-facing, which means that they may see a huge volume of requests. In order to handle the load, applications usually only touch a small number of records in each query. OLAP are optimized for analytics
+
+### OLAP 数据库索引
+#### Column-Oriented Storage 列存储
+中间讲了列压缩
+
+### OLTP 数据库索引
 #### Hash indexes
 
   1. Introduce hash indexes
@@ -62,9 +70,6 @@ in main memory and a set of SSTables. 当有数据来的时候，先放入log fi
    - read might slow
    - compaction process can sometimes interfere with the performance of ongoing reads and writes
    - If write throughput is high and compaction is not configured carefully, it can happen that compaction cannot keep up with the rate of incoming writes
-
-
-
 
 #### B Tree
 
