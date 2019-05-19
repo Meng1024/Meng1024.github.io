@@ -18,9 +18,9 @@ tags:
 
  1. Programming language–specific encodings are restricted to a single program‐ ming language and often fail to provide forward and backward compatibility.
 
- - Textual formats like JSON, XML, and CSV are widespread, and their compatibil‐ ity depends on how you use them. e.g. JSON and XML have good support for Unicode character strings, but they don’t support binary strings. So people get around this limitation by encoding the binary data as text using Base64.
+ 2. Textual formats like JSON, XML, and CSV are widespread, and their compatibil‐ ity depends on how you use them. e.g. JSON and XML have good support for Unicode character strings, but they don’t support binary strings. So people get around this limitation by encoding the binary data as text using Base64.
 
- - Binary schema–driven formats like Thrift, Protocol Buffers, and Avro allow compact, efficient encoding with clearly defined forward and backward compati‐ bility semantics. The schemas can be useful for documentation and code genera‐ tion in statically typed languages. However, they have the downside that data needs to be decoded before it is human-readable.
+ 3. Binary schema–driven formats like Thrift, Protocol Buffers, and Avro allow compact, efficient encoding with clearly defined forward and backward compati‐ bility semantics. The schemas can be useful for documentation and code genera‐ tion in statically typed languages. However, they have the downside that data needs to be decoded before it is human-readable.
 
 ### Dataflow
 1. Databases
