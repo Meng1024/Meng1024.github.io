@@ -1,15 +1,48 @@
 ---
 layout:     post
-title:      "[Designing Data-Intensive Applications] Chapter 3"
-subtitle:   "Chapter 3"
+title:      "[Designing Data-Intensive Applications] Part 1"
+subtitle:   "Chapter 1"
 categories: System-Design
-date:       2019-05-13
+date:       2019-04-29
 author:     "Meng"
 header-img: "img/post-bg-os-metro.jpg"
 catalog: true
 tags:
   - System Design
 ---
+
+## Chapter 1
+据小伙伴说，这本书去年还挺火的Designing Data-Intensive Applications.
+最近闲来无聊读读看看。
+
+前言加第一章一般都是预热章节， 给一个high level idea. 作者聊聊这书给谁看的。挺有意思的。
+第一章就是讲什么是 Reliability，Scalability，Maintainability
+
+放上chapter章尾的summay：
+
+1. Reliability means making systems work correctly, even when faults occur. Faults can be in hardware (typically random and uncorrelated), software (bugs are typically sys‐ tematic and hard to deal with), and humans (who inevitably make mistakes from time to time). Fault-tolerance techniques can hide certain types of faults from the end user.
+
+2. Scalability means having strategies for keeping performance good, even when load increases.
+
+3. Maintainability 就是说好好写代码，好好维护。。。
+
+
+## Chapter 2
+这章主要讲了3种database 类型
+
+NoSQL
+1. Document databases target use cases where data comes in self-contained documents and relationships between one document and another are rare.
+2. Graph databases go in the opposite direction, targeting use cases where anything is potentially related to everything.
+
+SQL
+3. Relation database
+
+这有一个[youtube video](https://www.youtube.com/watch?v=ZS_kXvOeQ5Y) 对比NoSQL和SQL.简单明了。 图片也是摘自该视频。
+当需要存储大量多对多的关系，SQL更新起来比较方便，NoSQL这种情况下可能需要重复更新一些值。但是如果是大量的读操作，如果SQL需要join很多表的话，那么这时候NoSQL可能更好一点。 所以不能简单说哪种类型的数据库更好， 需要看被处理的数据类型和load。
+
+![here](https://meng1024.github.io/images/posts/system_design/databaseCompare.png)
+
+
 
 ## Chapter 3
 这章主要讲数据的存储与索引：
@@ -81,3 +114,23 @@ in main memory and a set of SSTables. 当有数据来的时候，先放入log fi
  - Each key exists in exactly one place in the B tree, whereas a log-structured storage engine may have multiple copies of the same key in different segments.
 4. disadvantages
  - writes slow since overwrite data
+
+
+## Chapter 4
+This chapter discussed several data encoding formats and their compatibility properties and several modes of dataflow.
+
+### Data encoding formats
+
+1. Programming language–specific encodings are restricted to a single program‐ ming language and often fail to provide forward and backward compatibility.
+
+2. Textual formats like JSON, XML, and CSV are widespread, and their compatibility depends on how you use them. e.g. JSON and XML have good support for Unicode character strings, but they don’t support binary strings. So people get around this limitation by encoding the binary data as text using Base64.
+
+3. Binary schema–driven formats like Thrift, Protocol Buffers, and Avro allow compact, efficient encoding with clearly defined forward and backward compatibility semantics. The schemas can be useful for documentation and code genera‐ tion in statically typed languages. However, they have the downside that data needs to be decoded before it is human-readable.
+
+### Dataflow
+1. Databases
+2. RPC and REST APIs
+ - The RPC model tries to make a request to a remote net‐ work service look the same as calling a function or method in your programming language, within the same process. 这里书里罗列了几点local requests和网络之间call的不同.
+3. Message-Passing Dataflow: a difference compared to RPC is that message-passing communication is usually one-way: a sender normally doesn’t expect to receive a reply to its messages.
+
+这章看起来还是比较轻松的，几乎没讲什么。都是一些基础概念。。过
