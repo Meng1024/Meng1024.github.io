@@ -51,3 +51,51 @@ class Solution {
     }
 }
 ```
+
+### My Calendar I, II, III
+1. 729-My Calendar I
+2. 731-My Calendar II
+3. 732-My Calendar III
+
+Calendar I是问是否能够成功book一个meeting without conflicting. 用treemap 存开始和结束位置，每次有一个新的book的话，就检查是否合格, 因为treemap里面存的不可能有conflicts 的情况，所以直接找floorkey 和ceilkey就可以。
+```
+class MyCalendar {
+    TreeMap<Integer, Integer> calendar;
+
+    MyCalendar() {
+        calendar = new TreeMap();
+    }
+    public boolean book(int start, int end) {
+        Integer prev = calendar.floorKey(start),
+                next = calendar.ceilingKey(start);
+        if ((prev == null || calendar.get(prev) <= start) &&
+                (next == null || end <= next)) {
+            calendar.put(start, end);
+            return true;
+        }
+        return false;
+    }
+}
+```
+Calendar II 和Calendar III 归到根本就是问，在同一个时间段最大的meeting 数。
+这样的话，我门遇到起始位置就+1，遇到结束位置就-1. 然后设置一个变量记录峰值即可。这波骚操作解决一个hard。。。 哈哈哈
+```
+class MyCalendarThree {
+    TreeMap<Integer, Integer> map;
+    public MyCalendarThree() {
+        map = new TreeMap<>();
+    }
+
+    public int book(int start, int end) {
+        map.put(start, map.getOrDefault(start, 0) + 1);
+        map.put(end, map.getOrDefault(end, 0) - 1);
+        int ret = 0;
+        int tmp = 0;
+        for(int d : map.values()) {
+            tmp += d;
+            ret = Math.max(ret, tmp);
+        }
+        return ret;
+    }
+}
+```
