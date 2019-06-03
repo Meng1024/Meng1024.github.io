@@ -31,3 +31,20 @@ tags:
 1. Read-after-write consistency: Users should always see data that they submitted themselves.
 2. Monotonic reads: After users have seen the data at one point in time, they shouldn’t later see the data from some earlier point in time.
 3. Consistent prefix reads: Users should see the data in a state that makes causal sense: for example, seeing a question and its reply in the correct order.
+
+### Chapter 6
+Partitioning(sharding) is a way of intentionally breaking a large database down into smaller ones. The main reason for wanting to partition data is scalability
+
+If the partitioning is unfair, it can cause:
+- hot spots (nodes with disproportionately high load)
+- skewed (some partitions have more data or queries than others)
+
+Different ways of partitioning a large dataset into smaller subsets:
+
+1. Partitioning by Key Range
+  - advantages: easy for range queries
+  - diadvantages: certain access patterns can lead to hot spots. e.g. if index is timestamp. all data in a timespan will go to the same partition.
+
+2. Partitioning by Hash of Key
+  - advantages: reduce hot spots but it cannot avoid entirely. e.g. a celebrity user with millions of followers 发生点什么新闻， 用户评论讲写入同一个key. 一个简单的解决办法，在key后面加一些random number. 但是这样做的话，read的时候需要额外的合并操作.
+  - disadvantages: lose a nice property of key-range partitioning
