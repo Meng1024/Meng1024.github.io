@@ -59,3 +59,24 @@ Different ways of partitioning a large dataset into smaller subsets:
 - Document-partitioned indexes (local indexes), where the secondary indexes are stored in the same partition as the primary key and value. This means that only a single partition needs to be updated on write, but a read of the secondary index requires a scatter/gather across all partitions.
 
 - Term-partitioned indexes (global indexes), where the secondary indexes are partitioned separately, using the indexed values. An entry in the secondary index may include records from all partitions of the primary key. When a document is written, several partitions of the secondary index need to be updated; however, a read can be served from a single partition.
+
+### Chapter 7
+
+首先定义了什么是ACID 是一下4个词的缩写。
+Atomicity, Consistency, Isolation, Durability
+
+#### Weak Isolation
+- Read Committed
+这个可以保证没有脏写与脏读。
+实现方法：
+给每行加锁读写的时候。 读的时候加锁效果不好，如果有写的情况发生，读的时候可以返回旧数据来解决问题。
+
+- Snapshot Isolation
+
+  一个 Read Committed 可能出现的问题，如图， 100 块钱消失了。
+
+  ![here](https://meng1024.github.io/images/posts/system_design/readCommitted.png)
+
+  可以通过 snapshot isolation来解决。  The idea is that each transaction reads from a consistent snapshot of the database that is, the transaction sees all the data that was committed in the database at the start of the transaction. Even if the data is subsequently changed by another transaction, each transaction sees only the old data from that particular point in time. 一种实现方法叫做 multi-version concurrency control (MVCC)。
+  如果一个数据库只需要提供read committed级别的隔离，那么保存两个版本即可。
+  这样刚才的那个例子，当用户查询自己第二个账号的是返回的会是500.
