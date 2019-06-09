@@ -80,3 +80,18 @@ Atomicity, Consistency, Isolation, Durability
   可以通过 snapshot isolation来解决。  The idea is that each transaction reads from a consistent snapshot of the database that is, the transaction sees all the data that was committed in the database at the start of the transaction. Even if the data is subsequently changed by another transaction, each transaction sees only the old data from that particular point in time. 一种实现方法叫做 multi-version concurrency control (MVCC)。
   如果一个数据库只需要提供read committed级别的隔离，那么保存两个版本即可。
   这样刚才的那个例子，当用户查询自己第二个账号的是返回的会是500.
+
+- Preventing Lost updates
+  - 自动检查
+  - compare and set 就是在更新的时候的时候检测一下条件语句是否成立
+
+- Write Skew and Phantoms
+  发生的场景如下， 两个事务从快照隔离读相同的数据，然后各作修改。导致一票卖两人的错误。
+  Phantoms 发生在​事务读取符合某些搜索条件的对象。另一个客户端进行写入，影响搜索结果
+
+#### Serializability
+- ​Actual Serial Execution：如果每个事务的执行速度非常快，并且事务吞吐量足够低，足以在单个CPU核上处理，这是一个简单而有效的选择
+
+- Two-Phase Locking (2PL)：共享锁和排他锁， 数十年来，两阶段锁定一直是实现可序列化的标准方式，但是许多应用出于性能问题的考虑避免使用它。
+
+- Serializable Snapshot Isolation (SSI): 一个相当新的算法，避免了先前方法的大部分缺点。它使用乐观的方法，允许事务执行而无需阻塞。当一个事务想要提交时，它会进行检查，如果执行不可序列化，事务就会被中止。
