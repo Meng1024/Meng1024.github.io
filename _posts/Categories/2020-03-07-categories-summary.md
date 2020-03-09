@@ -1,0 +1,20 @@
+---
+layout:     post
+title:      "Algorithm Summary"
+subtitle:   ""
+date:       2020-03-07
+author:     "Meng"
+header-img: "img/post-bg-os-metro.jpg"
+catalog: true
+tags:
+  - Leetcode
+  - Algorithm
+---
+
+## Summary
+#### Data Structure  
+- [Stack]({% post_url 2020-02-24-stack %})
+- [Priority Queue]({% post_url 2020-03-03-priorityqueue %})
+
+#### More
+- [Greedy]({% post_url 2020-02-20-greedy %})
