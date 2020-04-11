@@ -18,3 +18,4 @@ tags:
 
 #### More
 - [Greedy]({% post_url 2020-02-20-greedy %})
+- [Math]({% post_url 2020-03-12-math %})
