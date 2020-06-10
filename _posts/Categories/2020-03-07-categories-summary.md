@@ -15,7 +15,8 @@ tags:
 #### Data Structure  
 - [Stack]({% post_url 2020-02-24-stack %})
 - [Priority Queue]({% post_url 2020-03-03-priorityqueue %})
-
+- [Graph]({% post_url 2020-04-25-graph %})
 #### More
 - [Greedy]({% post_url 2020-02-20-greedy %})
 - [Math]({% post_url 2020-03-12-math %})
+- [Topological Sort]({% post_url 2020-04-18-topological-sort %})

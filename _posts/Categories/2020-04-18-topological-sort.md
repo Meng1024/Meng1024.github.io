@@ -1,24 +1,21 @@
 ---
 layout:     post
-title:      "Math Summary"
+title:      "Topological Sort Summary"
 subtitle:   "贪心小结"
 categories: Algorithm
-date:       2020-03-12
+date:       2020-04-18
 author:     "Meng"
 header-img: "img/post-bg-os-metro.jpg"
 catalog: true
 tags:
   - Leetcode
   - Algorithm
-  - Math
   - secret
+
 ---
 
-## Math Summary
-
-## Leetcode
+## Topological Sort Summary
 
 | No. | title                                                                                                        | difficulty      |
 |--------------------------------------------------------------------------------------------------------------------|-----------------|
-| 1359| [Count All Valid Pickup and Delivery Options]({% post_url 2020-03-12-leetcode-1359 %})                       | Hard            |
-| 523 | [Continuous Subarray Sum]({% post_url 2020-04-24-leetcode-523 %})                                            | Medium          |
+| 207 | [Course Schedule I/II]({% post_url 2020-04-25-leetcode-207-210 %})                                           | Medium          |

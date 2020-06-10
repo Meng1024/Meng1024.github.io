@@ -92,3 +92,6 @@ class Solution {
 | 42  | [Merge k Sorted Lists]({% post_url 2020-03-08-leetcode-23 %})                                                | Hard            |
 | 347 | [Top K Frequent Elements]({% post_url 2020-03-11-leetcode-347 %})                                            | Medium          |
 | 218 | [The Skyline Problem]({% post_url 2020-04-10-leetcode-218 %})                                                | Hard            |
+| 253 | [Meeting Rooms II]({% post_url 2020-04-16-leetcode-253 %})                                                   | Medium          |
+| 215 | [Kth Largest Element in an Array]({% post_url 2020-04-18-leetcode-215 %})                                    | Medium          |
+| 973 | [K Closest Points to Origin]({% post_url 2020-04-18-leetcode-973 %})                                         | Medium          |
