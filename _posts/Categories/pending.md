@@ -842,3 +842,58 @@ class Solution {
     }
 }
 ```
+
+
+
+```
+class Solution {
+    public int minCost(int[] houses, int[][] cost, int m, int n, int target) {
+        int[][][] dp = new int[1 + m][1 + n][1 + target];
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                for (int k = 0; k <= target; k++) {
+                    dp[i][j][k] = Integer.MAX_VALUE;
+                }
+            }
+        }
+        dp[0][0][0] = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j <= n; j++) {
+                for (int k = 0; k <= target; k++) {
+                    if (dp[i][j][k] == Integer.MAX_VALUE) {
+                        continue;
+                    }
+                    if (houses[i] == 0) {
+                        // paint house at i
+                        for (int nj = 1; nj <= n; nj++) {
+                            if (nj == j) {
+                                dp[i + 1][j][k] = Math.min(dp[i + 1][j][k], dp[i][j][k] + cost[i][nj - 1]);
+                            } else {
+                                if (k != target) {
+                                    dp[i + 1][nj][k + 1] = Math.min(dp[i + 1][nj][k + 1], dp[i][j][k] + cost[i][nj - 1]);
+                                }
+                            }
+                        }
+                    } else {
+                        // no paint at i
+                        int nj = houses[i];
+                        if (nj == j) {
+                            dp[i + 1][j][k] = Math.min(dp[i + 1][j][k], dp[i][j][k]);
+                        } else {
+                            if (k != target) {
+                                dp[i + 1][nj][k + 1] = Math.min(dp[i + 1][nj][k + 1], dp[i][j][k]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        int res = Integer.MAX_VALUE;
+        for (int j = 1; j <= n; j++) {
+            res = Math.min(res, dp[m][j][target]);
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+}
+```
