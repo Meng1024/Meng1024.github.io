@@ -15,7 +15,7 @@ permalink: /about/
 愿君多采撷，
 此物最相思。
 
-## 联系
+## Contact
 
 {% for website in site.data.social %}
 * {{ website.sitename }}：[@{{ website.name }}]({{ website.url }})
