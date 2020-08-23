@@ -7,6 +7,7 @@ date:       2019-05-30
 author:     "Meng"
 header-img: "img/post-bg-os-metro.jpg"
 catalog: true
+hidden: true
 tags:
   - life
   - secret
