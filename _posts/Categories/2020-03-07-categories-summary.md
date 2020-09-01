@@ -16,6 +16,7 @@ tags:
 - [Stack]({% post_url 2020-02-24-stack %})
 - [Priority Queue]({% post_url 2020-03-03-priorityqueue %})
 - [Graph]({% post_url 2020-04-25-graph %})
+- [Linked List]({% post_url 2020-08-31-linkedlist %})
 #### More
 - [Greedy]({% post_url 2020-02-20-greedy %})
 - [Math]({% post_url 2020-03-12-math %})
