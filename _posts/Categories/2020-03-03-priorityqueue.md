@@ -16,6 +16,75 @@ tags:
 ---
 
 ## Priority Queue Summary
+## 建堆
+堆的性质， 以小根堆为例子， 父亲的节点不大于儿子的节点。 这样的数据结构成为堆
+### Insert
+插入操作：插入在最后面，然后和自己的父亲相交换直到不大于自己的父亲节点。 复杂度 log(n)
+### pop
+删除操作， 把最后一个元素与第一个元素交换，在向下交换。 复杂度 log(n)
+### 建堆
+因为是从底向上建的，这样，有1/2的元素向下比较了一次，有1/4的向下比较了两次，1/8的，向下比较了3次，......，1/2^k的向下比较了k次，其中1/2^k <= 1。 所以所有移动的总和为 $\sum_{k=1}^{logn} \Big[\frac{n}{2^{k}} * k\Big]$ 所以最后经过计算就是 O(n) 复杂度
+
+```
+import java.util.*;
+import java.lang.*;
+class Heap{
+    int[] heap;
+    int sz = 0;
+    public Heap(int[] items) {
+        this.heap = items;
+        this.sz = items.length;
+        int i = items.length - 1;
+        while(i >= 0) {
+            heapify(i);
+            i--;
+        }
+        for(int j : heap) System.out.print(j + " ");
+        System.out.println("HEAP builded");
+    }
+    public void push(int x) {
+        int i = sz++;
+        while(i > 0) {
+            int parent = (i - 1) / 2;
+            if(heap[parent] <= x) break;
+            heap[i] = heap[parent];
+            i = parent;
+        }
+        heap[i] = x;
+    }
+    public int pop() {
+        if(sz  == 0) return -1;
+        int ret = heap[0];
+        this.sz--;
+        heap[0] = heap[sz];
+        heapify(0);
+        return ret;
+    }
+
+    public void heapify(int x) {
+        int i  = x;
+        while(i * 2 + 1 < sz) {
+            int l = i * 2 + 1, r = i * 2 + 2;
+            if(r < sz && heap[r] < heap[l]) l = r;
+            if(heap[l] > heap[i]) break;
+            int tmp = heap[i];
+            heap[i] = heap[l];
+            heap[l] = tmp;
+            i = l;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] item = new int[]{5,4,3,2,1,9,6,7,4};
+        Heap test = new Heap(item);
+        int ret = 0;
+        while(ret != -1) {
+            ret = test.pop();
+            System.out.print(ret + " ");
+        }
+    }
+}
+```
 ## 经典案例
 ### Argus
 编写一个系统， 该系统支持一个 register 命令。来注册不同时间， 且每个 period 时间， 就会才生一个 Q_num 事件。 输出前 k 个时间。  
