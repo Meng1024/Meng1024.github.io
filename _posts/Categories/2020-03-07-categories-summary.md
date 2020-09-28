@@ -20,5 +20,6 @@ tags:
 #### More
 - [Greedy]({% post_url 2020-02-20-greedy %})
 - [Math]({% post_url 2020-03-12-math %})
-- [Topological Sort]({% post_url 2020-04-18-topological-sort %})
 - [Brainteaser]({% post_url 2020-09-17-brainteaser %})
+- [Topological Sort]({% post_url 2020-04-18-topological-sort %})
+- [Dynamic Programming]({% post_url 2020-09-25-dp %})
