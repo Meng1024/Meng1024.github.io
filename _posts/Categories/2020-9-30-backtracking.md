@@ -24,3 +24,5 @@ tags:
 |--------------------------------------------------------------------------------------------------------------------|-----------------|
 | 78  | [Subsets]({% post_url 2020-09-30-leetcode-78 %})                                                             | Medium          |
 |1255 | [Maximum Score Words Formed by Letters]({% post_url 2020-10-02-leetcode-1255 %})                             | Hard            |
+| 465 | [Optimal Account Balancing]({% post_url 2020-10-14-leetcode-465 %})                                          | Hard            |
+| 329 | [Longest Increasing Path in a Matrix]({% post_url 2020-10-16-leetcode-329 %})                               | Hard            |
