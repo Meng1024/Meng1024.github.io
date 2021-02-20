@@ -66,46 +66,43 @@ public static void swap(int[] arr, int x, int y) {
 public static void qsort(int[] arr, int l, int r) {
     if(l >= r) return;
     int index = (int)(Math.random() * (r - l + 1)) + l;
-    swap(arr, index, l);
-
+    int v = arr[index];
     int st = l - 1, end = r + 1;
     while(st < end) {
-        while(arr[++st] < arr[l]);
-        while(arr[--end] > arr[l]);
+        while(arr[++st] < v);
+        while(arr[--end] > v);
         if(st < end)swap(arr, st, end);
     }
-    swap(arr, end, l);
-    qsort(arr, l, end - 1);
+    qsort(arr, l, end);
     qsort(arr, end + 1, r);
-
 }
 ```
+
 ### find Kth largest number
 O(n)
 ```
-class Main {
-    public static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
-    public static int findKth(int[] arr, int k, int l, int r) {
-        if(l >= r) return arr[r];
-        int index = (int)(Math.random() * (r - l + 1)) + l;
-        swap(arr, index, l);
-        int start = l - 1, end = r + 1;
-        while(start < end) {
-            while(arr[++start] < arr[l]);
-            while(arr[--end] > arr[l]);
-            if(start < end) swap(arr, start, end);
-        }
-        swap(arr, l, end);
-        if(end - l + 1 < k) {
-            return findKth(arr, k - (end - l + 1), end + 1, r);
-        } else {
-            return findKth(arr, k, l, end );
-        }
-    }
+public static void swap(int[] arr, int i, int j) {
+   int tmp = arr[i];
+   arr[i] = arr[j];
+   arr[j] = tmp;
+}
+public static int findKth(int[] arr, int k, int l, int r) {
+   if(l >= r) return arr[r];
+   int index = (int)(Math.random() * (r - l + 1)) + l;
+   int v = arr[index];
+   int start = l - 1, end = r + 1;
+   while(start < end) {
+       while(arr[++start] < v);
+       while(arr[--end] > v);
+       if(start < end) swap(arr, start, end);
+   }
+
+   if(end - l + 1 < k) {
+       return findKth(arr, k - (end - l + 1), end + 1, r);
+   } else {
+       return findKth(arr, k, l, end );
+   }
+}
 ```
 
 ## Merge sort
