@@ -14,6 +14,7 @@ tags:
 ## Summary
 #### Algorithm Basic
 - [Algorithm 101]({% post_url 2020-12-1-algorithm-101 %})
+- [Algorithm Medium]({% post_url 2021-04-07-algorithm-medium %})
 
 #### Data Structure  
 - [Stack]({% post_url 2020-02-24-stack %})
@@ -31,3 +32,8 @@ tags:
 - [Sliding Window]({% post_url 2020-10-21-sliding-window %})
 - [Topological Sort]({% post_url 2020-04-18-topological-sort %})
 - [Dynamic Programming]({% post_url 2020-09-25-dp %})
+
+
+#### others
+- [lc summary]({% post_url 2019-05-26-leetcode %})
+- [Reservoir Sampling]({% post_url 2019-06-05-Reservoir-Sampling %})
