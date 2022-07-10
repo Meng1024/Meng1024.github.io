@@ -14,8 +14,29 @@ tags:
 
 # Summary
 
+## Chapter 3 Methods Common To All Objects
+
+### item 10
+The instanceof operator is specified to
+return false if its first operand is null, regardless of what type appears in the
+second operand [JLS, 15.20.2]. Therefore, the type check will return false if
+null is passed in, so you don’t need an explicit null check.
+
+## Chapter 4 Class and Interface
+
+## Item 15
+Instance fields of public classes should rarely be public (Item 16). If an
+instance field is nonfinal or is a reference to a mutable object, then by making it
+public, you give up the ability to limit the values that can be stored in the field.
+This means you give up the ability to enforce invariants involving the field. Also,
+you give up the ability to take any action when the field is modified, so classes
+with public mutable fields are not generally thread-safe.
+
+## Item 16
+In summary, public classes should never expose mutable fields.
 
 ## Chapter 10  Exception
+
 ### Item 69/70
 Use checked exceptions for conditions from which the caller
 can reasonably be expected to recover. If a program throws an unchecked exception or an
