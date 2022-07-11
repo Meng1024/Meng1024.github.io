@@ -16,7 +16,7 @@ tags:
 
 ## Chapter 3 Methods Common To All Objects
 
-### item 10
+### Item 10
 The instanceof operator is specified to
 return false if its first operand is null, regardless of what type appears in the
 second operand [JLS, 15.20.2]. Therefore, the type check will return false if
@@ -50,24 +50,24 @@ exceptions. Don’t define any throwables that are neither checked exceptions no
 runtime exceptions. Provide methods on your checked exceptions to aid in
 recovery.
 
-### item 71
+### Item 71
 If a method throws
 checked exceptions, the code that invokes it must handle them in one or more catch
 blocks, or declare that it throws them and let them propagate outward. Either way, it
 places a burden on the user of the API. The burden increased in Java 8, as methods
 throwing checked exceptions can’t be used directly in streams
 
-### item 72
+### Item 72
 - Do not reuse Exception, RuntimeException, Throwable, or Error directly.
 - Remember that exceptions are serializable (Chapter 12). That alone is reason not to
 write your own exception class without good reason.
 
-### item 75
+### Item 75
 To capture a failure, the detail message of an exception should contain the
 values of all parameters and fields that contributed to the exception.
 do not include passwords, encryption keys, and the like in detail messages.
 
-### item 76
+### Item 76
 Generally speaking, a failed method invocation should leave
 the object in the state that it was in prior to the invocation. A method with this
 property is said to be failure-atomic.
